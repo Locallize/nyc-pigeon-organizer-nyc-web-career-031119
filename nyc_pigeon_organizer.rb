@@ -52,20 +52,19 @@ end
 # add array to the attrib below
 
 
-while new_hassh.keys.length > counter2
-
-  new_hassh.each do |new_key, new_value|
+new_hassh.each do |new_key, new_value|
     new_value.each do |k, v|
-      if data[k].values[counter].any?(new_key) 
-          # new_hassh[new_key][k] = 8 
-      #  data[k].keys[counter].to_s
+      data.each do |attrib, features|
+        features.each do |data_keys, data_values|
+          if data_values.include?(new_key) && attrib == k
+          # return features.keys[counter2].to_s
+          new_hassh[new_key][k] <<  data_keys.to_s
+          end
+        end
       end
     end
   end 
-counter2 += 1
-end
   new_hassh
-
 end
 
 # nyc_pigeon_organizer(pigeon_data)
